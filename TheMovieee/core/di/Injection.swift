@@ -27,14 +27,20 @@ final class Injection: NSObject {
         
         return TvRepository.sharedInstance(local, remote)
     }
-    
+
     func provideMovie() -> MovieUseCase {
         let repository = provideMovieRepository()
         return MovieInteractor(repository: repository)
     }
-    
+
     func provideTv() -> TvUseCase {
         let repository = provideTvRepository()
         return TvInteractor(repository: repository)
+    }
+
+    func provideFavorite() -> FavoriteUseCase {
+        let movieRepository = provideMovieRepository()
+        let tvRepository = provideTvRepository()
+        return FavoriteInteractor(movieRepository: movieRepository, tvRepository: tvRepository)
     }
 }

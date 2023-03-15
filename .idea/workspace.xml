@@ -4,11 +4,71 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04b48437-933c-4821-9094-ea2e976a26d1" name="Changes" comment="" />
+    <list default="true" id="04b48437-933c-4821-9094-ea2e976a26d1" name="Changes" comment="favorite">
+      <change afterPath="$PROJECT_DIR$/TheMovieee/core/data/local/LocalDatasorc.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TheMovieee/core/domain/usecase/FavoriteInteractor.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TheMovieee/module/favorite/FavoriteListView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TheMovieee/module/favorite/MovieFavoriteItemView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TheMovieee/module/favorite/Tabs.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TheMovieee/module/favorite/TvFavoriteItemView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TheMovieee/module/favorite/presenter/FavoritePresenter.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee.xcodeproj/project.xcworkspace/xcuserdata/sholi.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee.xcodeproj/project.xcworkspace/xcuserdata/sholi.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/AccentColor.colorset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/AccentColor.colorset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/github-logo.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/github-logo.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/gmail-logo.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/gmail-logo.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/profile.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/Assets.xcassets/profile.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/ContentView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/ContentView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/Preview Content/Preview Assets.xcassets/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/Preview Content/Preview Assets.xcassets/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/TheMovieeeApp.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/TheMovieeeApp.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/data/MovieRepository.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/data/MovieRepository.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/data/TvRepository.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/data/TvRepository.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/data/local/LocalDataSource.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/data/local/LocalDataSource.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/data/local/entity/FavoriteMovieEntity.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/data/local/entity/FavoriteMovieEntity.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/data/local/entity/FavoriteTvEntity.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/data/local/entity/FavoriteTvEntity.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/data/remote/RemoteDataSource.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/data/remote/RemoteDataSource.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/data/remote/response/DetailMovieResponse.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/data/remote/response/DetailMovieResponse.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/data/remote/response/DetailTvResponse.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/data/remote/response/DetailTvResponse.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/data/remote/response/MovieResponse.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/data/remote/response/MovieResponse.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/data/remote/response/TvResponse.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/data/remote/response/TvResponse.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/di/Injection.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/di/Injection.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/domain/usecase/MovieInteractor.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/domain/usecase/MovieInteractor.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/domain/usecase/TvInteractor.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/domain/usecase/TvInteractor.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/utils/extensions/CustomeError+Ext.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/utils/extensions/CustomeError+Ext.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/utils/mapper/DataMapper.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/utils/mapper/DataMapper.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/utils/network/APICall.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/utils/network/APICall.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/core/utils/view/ActivityIndicator.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/core/utils/view/ActivityIndicator.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/model/movie/DetailMovie.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/model/movie/DetailMovie.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/model/movie/MovieFavoriteModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/model/movie/MovieFavoriteModel.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/model/tv/DetailTv.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/model/tv/DetailTv.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/model/tv/Tv.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/model/tv/Tv.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/model/tv/TvFavoriteModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/model/tv/TvFavoriteModel.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/ProfileView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/ProfileView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/detail/movie/MovieDetailView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/detail/movie/MovieDetailView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/detail/movie/presenter/MovieDetailPresenter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/detail/movie/presenter/MovieDetailPresenter.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/detail/tv/TvDetailView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/detail/tv/TvDetailView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/detail/tv/presenter/TvDetailPresenter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/detail/tv/presenter/TvDetailPresenter.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/favorite/MovieFavoriteView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/favorite/MovieFavoriteView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/favorite/TvFavoriteView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/favorite/TvFavoriteView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/home/movie/MovieItemView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/home/movie/MovieItemView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/home/movie/MovieListView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/home/movie/MovieListView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/home/movie/presenter/MoviePresenter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/home/movie/presenter/MoviePresenter.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/home/tv/TvItemView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/home/tv/TvItemView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/home/tv/TvListView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/home/tv/TvListView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheMovieee/module/home/tv/presenter/TvPresenter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/TheMovieee/module/home/tv/presenter/TvPresenter.swift" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_D41F9532-FB4C-4DD5-AA0F-7939AD9DA3DE" />
   <component name="ExternalProjectsData">
@@ -16,12 +76,19 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="AppCode" />
     <option name="majorVersion" value="2022" />
     <option name="minorVersion" value="3.2" />
   </component>
   <component name="ProjectId" id="2MuOi8sCeF510k5ygipB1gFkYKq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -56,11 +123,16 @@
       <option name="presentableId" value="Default" />
       <updated>1678614125771</updated>
       <workItem from="1678614129409" duration="91000" />
-      <workItem from="1678808168450" duration="73000" />
+      <workItem from="1678808168450" duration="629000" />
+      <workItem from="1678892315453" duration="2576000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="favorite" />
+    <option name="LAST_COMMIT_MESSAGE" value="favorite" />
   </component>
 </project>

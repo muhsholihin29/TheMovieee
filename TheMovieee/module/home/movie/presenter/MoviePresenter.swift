@@ -41,7 +41,7 @@ class MoviePresenter: ObservableObject {
     }
     
     func getPopularMovies() {
-        self.popularLoadingState = true
+        popularLoadingState = true
         
         movieUseCase.getMovies(type: MovieType.POPULAR.rawValue)
             .receive(on: RunLoop.main)
@@ -60,21 +60,17 @@ class MoviePresenter: ObservableObject {
     }
     
     func getTopRatedMovies() {
-        print("mytag loading")
-        self.topRatedLoadingState = true
+        topRatedLoadingState = true
         movieUseCase.getMovies(type: MovieType.TOP_RATED.rawValue)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                     case .failure:
-                        print("mytag error")
                         self.topRatedErrorMessage = String(describing: completion)
                     case .finished:
-                        print("mytag finished")
                         self.topRatedLoadingState = false
                 }
             }, receiveValue: { movies in
-                print("mytag " + String(movies.count))
                 self.topRatedMovies = movies
                 
             })
@@ -82,7 +78,7 @@ class MoviePresenter: ObservableObject {
     }
     
     func getNowPlayingMovies() {
-        self.nowPlayingLoadingState = true
+        nowPlayingLoadingState = true
         movieUseCase.getMovies(type: MovieType.NOW_PLAYING.rawValue) .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -99,7 +95,7 @@ class MoviePresenter: ObservableObject {
     }
     
     func getUpcomingMovies() {
-        self.upcomingLoadingState = true
+        upcomingLoadingState = true
         movieUseCase.getMovies(type: MovieType.UPCOMING.rawValue) .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -116,10 +112,12 @@ class MoviePresenter: ObservableObject {
     }
     
     func linkBuilder<Content: View>(
-        for category: Movie,
-        @ViewBuilder content: () -> Content
+            for movie: Movie,
+            @ViewBuilder content: () -> Content
     ) -> some View {
         NavigationLink(
-            destination: router.makeDetailView(for: category)) { content() }
+                destination: router.makeDetailView(for: movie)) {
+            content()
+        }
     }
 }

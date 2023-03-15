@@ -120,9 +120,9 @@ struct MovieListView: View {
             
             }
         }.navigationBarTitle(
-            Text("Meals Apps"),
-            displayMode: .automatic
-        )
+                        Text("TheMovieee"),
+                        displayMode: .automatic
+                )
     }
 }
 

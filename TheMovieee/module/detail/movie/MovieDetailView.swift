@@ -50,7 +50,7 @@ struct MovieDetailView: View {
                             .padding(.vertical, 8.0)
                         Text("Rating : " + String(presenter.detailMovie?.voteAverage ?? 0))
                         if (presenter.detailMovie?.voteCount ?? 0 > 0) {
-                            Text("Total Achievments : " + String(presenter.detailMovie?.voteCount ?? 0))
+                            Text("Total Rating : " + String(presenter.detailMovie?.voteCount ?? 0))
                         }
                         
                         Text("Description")
@@ -68,14 +68,14 @@ struct MovieDetailView: View {
                             HStack {
                                 if presenter.isFavorite {
                                     Button {
-//                                        deleteFavorite()
+                                        presenter.deleteFavorite(movie)
                                     } label: {
                                         Image(systemName: "heart.fill").imageScale(.large)
                                             .tint(.blue)
                                     }
                                 } else {
                                     Button {
-//                                        addFavorite()
+                                        presenter.addFavorite(movie)
                                     } label: {
                                         Image(systemName: "heart").imageScale(.large)
                                             .tint(.blue)
@@ -84,45 +84,17 @@ struct MovieDetailView: View {
                             }
                     )
                     .navigationBarTitle("", displayMode: .inline)
-                    .padding([.leading, .bottom, .trailing], 20)
+                            .padding([.leading, .bottom, .trailing], 20)
                 }
             }
         }
-        .onAppear {
-            
-            self.presenter.getDetailMovie(id: movie.id ?? 0)
-        }
-//        .alert("Gagal memuat data!", isPresented: $isError) {
-//            Button("OK", role: .cancel) {
-//            }
-//        }
+                .onAppear {
+                    self.presenter.getFavoriteStatus(id: movie.id)
+                    self.presenter.getDetailMovie(id: movie.id)
+                }
     }
-    
-//    func addFavorite() {
-//        gameProvider.createFavorite(FavoriteModel(id: Int16(game.id!), name: game.name, released: game.released, backgroundImage: game.backgroundImage, rating: game.rating)) { success in
-//            if success {
-//                isFavorite = true
-//            }
-//        }
-//    }
-//
-//    func deleteFavorite() {
-//        gameProvider.deleteFavorite(game.id!) { success in
-//            if success {
-//                isFavorite = false
-//            }
-//        }
-//    }
-//
-//    func getFavorite() {
-//        gameProvider.getFavorite(game.id!) { game in
-//            isFavorite = true
-//        }
-//    }
-}
 
-//struct MovieDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MovieDetailView()
-//    }
-//}
+    func addFavorite() {
+
+    }
+}

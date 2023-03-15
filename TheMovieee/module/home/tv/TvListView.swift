@@ -121,14 +121,8 @@ struct TvListView: View {
                 }
             }
         }.navigationBarTitle(
-            Text("Meals Apps"),
-            displayMode: .automatic
-        )
+                        Text("TheMovieee"),
+                        displayMode: .automatic
+                )
     }
 }
-
-//struct TvListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TvListView()
-//    }
-//}

@@ -102,7 +102,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
             if let realm = self.realm {
                 let categories: Results<FavoriteMovieEntity> = {
                     realm.objects(FavoriteMovieEntity.self)
-                        .sorted(byKeyPath: "originalTitle", ascending: true)
+                            .sorted(byKeyPath: "title", ascending: true)
                 }()
                 completion(.success(categories.toArray(ofType: FavoriteMovieEntity.self)))
             } else {
@@ -116,7 +116,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
             if let realm = self.realm {
                 let categories: Results<FavoriteTvEntity> = {
                     realm.objects(FavoriteTvEntity.self)
-                        .sorted(byKeyPath: "originalName", ascending: true)
+                            .sorted(byKeyPath: "name", ascending: true)
                 }()
                 completion(.success(categories.toArray(ofType: FavoriteTvEntity.self)))
             } else {
@@ -129,8 +129,12 @@ extension LocalDataSource: LocalDataSourceProtocol {
         return Future<Bool, Error> { completion in
             if let realm = self.realm {
                 do {
+                    let movies: Results<FavoriteMovieEntity> = {
+                        realm.objects(FavoriteMovieEntity.self)
+                    }()
+                    let movie = movies.filter("movieId == \(entity.movieId)")
                     try realm.write {
-                        realm.delete(entity)
+                        realm.delete(movie)
                         completion(.success(true))
                     }
                 } catch {
@@ -146,8 +150,12 @@ extension LocalDataSource: LocalDataSourceProtocol {
         return Future<Bool, Error> { completion in
             if let realm = self.realm {
                 do {
+                    let tvs: Results<FavoriteTvEntity> = {
+                        realm.objects(FavoriteTvEntity.self)
+                    }()
+                    let tv = tvs.filter("tvId == \(entity.tvId)")
                     try realm.write {
-                        realm.delete(entity)
+                        realm.delete(tv)
                         completion(.success(true))
                     }
                 } catch {

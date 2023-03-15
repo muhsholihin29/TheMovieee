@@ -30,7 +30,7 @@ class MovieDetailPresenter: ObservableObject {
     }
     
     func getDetailMovie(id: Int) {
-        self.loadingState = true
+        loadingState = true
         detailUseCase.getDetailMovie(id: id)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
@@ -41,7 +41,6 @@ class MovieDetailPresenter: ObservableObject {
                         self.loadingState = false
                 }
             }, receiveValue: { detailMovie in
-                print(detailMovie.backdropPath)
                     self.detailMovie = detailMovie
                 
             })
@@ -53,10 +52,10 @@ class MovieDetailPresenter: ObservableObject {
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
-                    case .failure:
-                        self.errorMessage = String(describing: completion)
-                    case .finished:
-                        self.loadingState = false
+                case .failure:
+                    self.errorMessage = String(describing: completion)
+                case .finished: break
+
                 }
             }, receiveValue: { favoriteTv in
                 if (!favoriteTv.isEmpty){
@@ -67,54 +66,34 @@ class MovieDetailPresenter: ObservableObject {
             })
             .store(in: &cancellables)
     }
-    
-    func updateFavorite(movie: Movie){
-        detailUseCase.getFavoriteMovie(id: movie.id ?? 0)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                    case .failure:
-                        self.errorMessage = String(describing: completion)
-                    case .finished:
-                        self.loadingState = false
-                }
-            }, receiveValue: { favoriteMovie in
-                if (!favoriteMovie.isEmpty){
-                    self.deleteFavorite(movie)
-                } else {
-                    self.addFavorite(movie)
-                }
-            })
-            .store(in: &cancellables)
-    }
-    
-    private func deleteFavorite(_ movie: Movie){
+
+    func deleteFavorite(_ movie: Movie) {
         detailUseCase.deleteFavoriteMovie(movie: movie)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
                     case .failure:
                         self.errorMessage = String(describing: completion)
                     case .finished:
                         self.loadingState = false
-                }
-            }, receiveValue: { favoriteMovie in
+                    }
+                }, receiveValue: { favoriteMovie in
                 self.isFavorite = false
             })
             .store(in: &cancellables)
     }
-    
-    private func addFavorite(_ movie: Movie){
+
+    func addFavorite(_ movie: Movie) {
         detailUseCase.addFavoriteMovie(movie: movie)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
                     case .failure:
                         self.errorMessage = String(describing: completion)
                     case .finished:
                         self.loadingState = false
-                }
-            }, receiveValue: { favoriteMovie in
+                    }
+                }, receiveValue: { favoriteMovie in
                 self.isFavorite = true
             })
             .store(in: &cancellables)

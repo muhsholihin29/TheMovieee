@@ -50,7 +50,7 @@ struct TvDetailView: View {
                             .padding(.vertical, 8.0)
                         Text("Rating : " + String(presenter.detailTv?.voteAverage ?? 0))
                         if (presenter.detailTv?.voteCount ?? 0 > 0) {
-                            Text("Total Achievments : " + String(presenter.detailTv?.voteCount ?? 0))
+                            Text("Total Rating : " + String(presenter.detailTv?.voteCount ?? 0))
                         }
                         
                         Text("Description")
@@ -69,14 +69,14 @@ struct TvDetailView: View {
                             HStack {
                                 if presenter.isFavorite {
                                     Button {
-                                            //                                        deleteFavorite()
+                                        presenter.deleteFavorite(tv)
                                     } label: {
                                         Image(systemName: "heart.fill").imageScale(.large)
                                             .tint(.blue)
                                     }
                                 } else {
                                     Button {
-//                                        addFavorite()
+                                        presenter.addFavorite(tv)
                                     } label: {
                                         Image(systemName: "heart").imageScale(.large)
                                             .tint(.blue)
@@ -90,36 +90,9 @@ struct TvDetailView: View {
             }
         }
         .onAppear {
-            
-            self.presenter.getDetailTv(id: tv.id ?? 0)
+            self.presenter.getFavoriteStatus(id: tv.id)
+            self.presenter.getDetailTv(id: tv.id)
         }
     }
-    
-//    func addFavorite() {
-//        gameProvider.createFavorite(FavoriteModel(id: Int16(game.id!), name: game.name, released: game.released, backgroundImage: game.backgroundImage, rating: game.rating)) { success in
-//            if success {
-//                isFavorite = true
-//            }
-//        }
-//    }
-//
-//    func deleteFavorite() {
-//        gameProvider.deleteFavorite(game.id!) { success in
-//            if success {
-//                isFavorite = false
-//            }
-//        }
-//    }
-//
-//    func getFavorite() {
-//        gameProvider.getFavorite(game.id!) { game in
-//            isFavorite = true
-//        }
-//    }
 }
 
-//struct TvDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TvDetailView()
-//    }
-//}

@@ -14,15 +14,16 @@ struct TheMovieeeApp: App {
         let injection = Injection.init()
         let movieUseCase = injection.provideMovie()
         let tvUseCase = injection.provideTv()
+        let favoriteUseCase = injection.provideFavorite()
         let moviePresenter = MoviePresenter(movieUseCase: movieUseCase)
         let tvPresenter = TvPresenter(tvUseCase: tvUseCase)
-        
-        
+        let favoritePresenter = FavoritePresenter(favoriteUseCase: favoriteUseCase)
         
         WindowGroup {
             ContentView()
-                .environmentObject(moviePresenter)
-                .environmentObject(tvPresenter)
+                    .environmentObject(moviePresenter)
+                    .environmentObject(tvPresenter)
+                    .environmentObject(favoritePresenter)
         }
     }
 }

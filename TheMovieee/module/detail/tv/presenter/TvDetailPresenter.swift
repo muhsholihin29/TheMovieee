@@ -48,8 +48,7 @@ class TvDetailPresenter: ObservableObject {
                 switch completion {
                     case .failure:
                         self.errorMessage = String(describing: completion)
-                    case .finished:
-                        self.loadingState = false
+                case .finished: break
                 }
             }, receiveValue: { favoriteTv in
                 if (!favoriteTv.isEmpty){
@@ -60,54 +59,34 @@ class TvDetailPresenter: ObservableObject {
             })
             .store(in: &cancellables)
     }
-    
-    func updateFavorite(tv: Tv){
-        detailUseCase.getFavoriteTv(id: tv.id)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                    case .failure:
-                        self.errorMessage = String(describing: completion)
-                    case .finished:
-                        self.loadingState = false
-                }
-            }, receiveValue: { favoriteTv in
-                if (!favoriteTv.isEmpty){
-                    self.deleteFavorite(tv)
-                } else {
-                    self.addFavorite(tv)
-                }
-            })
-            .store(in: &cancellables)
-    }
-    
-    private func deleteFavorite(_ tv: Tv){
+
+    func deleteFavorite(_ tv: Tv) {
         detailUseCase.deleteFavoriteTv(tv: tv)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
                     case .failure:
                         self.errorMessage = String(describing: completion)
                     case .finished:
                         self.loadingState = false
-                }
-            }, receiveValue: { favoriteTv in
+                    }
+                }, receiveValue: { favoriteTv in
                 self.isFavorite = false
             })
             .store(in: &cancellables)
     }
-    
-    private func addFavorite(_ tv: Tv){
+
+    func addFavorite(_ tv: Tv) {
         detailUseCase.addFavoriteTv(tv: tv)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
                     case .failure:
                         self.errorMessage = String(describing: completion)
                     case .finished:
                         self.loadingState = false
-                }
-            }, receiveValue: { favoriteTv in
+                    }
+                }, receiveValue: { favoriteTv in
                 self.isFavorite = true
             })
             .store(in: &cancellables)

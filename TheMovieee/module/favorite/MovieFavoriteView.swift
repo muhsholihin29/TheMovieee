@@ -8,36 +8,26 @@
 import SwiftUI
 
 struct MovieFavoriteView: View {
+    @ObservedObject var presenter: FavoritePresenter
 
     var body: some View {
         VStack {
-//            List(listData, id: \.id) { game in
-//                VStack {
-//                    GameItemView(game:
-//                                    Game(id: Int(game.id!), slug: nil, name: game.name, released: game.released, tba: nil,
-//                                         backgroundImage: game.backgroundImage, rating: game.rating ?? 0.0, ratingTop: nil, ratingsCount: nil, reviewsTextCount: nil, added: nil, metacritic: nil, playtime: nil, suggestionsCount: nil, updated: nil, platforms: nil)
-//                    )
-//                    NavigationLink(destination: DetailView(game: Game(id: Int(game.id!), slug: nil, name: game.name, released: game.released, tba: nil, backgroundImage: game.backgroundImage, rating: game.rating ?? 0.0, ratingTop: nil, ratingsCount: nil, reviewsTextCount: nil, added: nil, metacritic: nil, playtime: nil, suggestionsCount: nil, updated: nil, platforms: nil))) {
-//                        EmptyView()
-//                    }
-//                }
-//            }
-//            .task {
-//                isHideLoader = false
-//                gameProvider.getAllFavorite { games in
-//                    isHideLoader = true
-//                    listData = games
-//                }
-//            }
-//            .alert(isPresented: self.$showErrorAlert) {
-//                Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .cancel())
-//            }
-        }
-    }
-}
+            if presenter.loadingState {
+                VStack {
+                    Text("Loading...")
+                    ActivityIndicator()
+                }
+            } else {
+                List(presenter.favoriteMovies, id: \.id) { movie in
+                    VStack {
+                        self.presenter.linkBuilderMovie(for: movie) {
+                                    MovieFavoriteItemView(movie: movie)
+                                }
+                                .buttonStyle(PlainButtonStyle())
 
-struct MovieFavoriteView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieFavoriteView()
+                    }
+                }
+            }
+        }
     }
 }
