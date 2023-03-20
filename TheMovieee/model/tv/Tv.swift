@@ -10,7 +10,6 @@ import Foundation
 struct Tv: Equatable, Identifiable {
     let backdropPath: String
     let firstAirDate: String
-    let genreIDS: [Int]
     let id: Int
     let name: String
     let popularity: Double
@@ -21,7 +20,6 @@ struct Tv: Equatable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
         case firstAirDate = "first_air_date"
-        case genreIDS = "genre_ids"
         case id, name
         case popularity
         case posterPath = "poster_path"

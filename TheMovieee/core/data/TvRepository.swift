@@ -35,54 +35,57 @@ final class TvRepository: NSObject {
     }
     
     static let sharedInstance: TvInstance = { localRepo, remoteRepo in
-        return TvRepository(local: localRepo, remote: remoteRepo)
+        TvRepository(local: localRepo, remote: remoteRepo)
     }
 }
 
 extension TvRepository: TvRepositoryProtocol {
 
-    
     func getTvs(type: TvType.RawValue) -> AnyPublisher<[Tv], Error> {
-                    return self.remote.getTvs(type: type)
-                        .map { DataMapper.mapTvResponseToDomain(input: $0) }
-                        .eraseToAnyPublisher()
+        remote.getTvs(type: type)
+                .map {
+                    DataMapper.mapTvResponseToDomain(input: $0)
+                }
+                .eraseToAnyPublisher()
     }
     
     func getDetailTv(id: Int) -> AnyPublisher<DetailTv, Error> {
-                    return self.remote.getDetailTv(id: id)
-                        .map { DataMapper.mapDetailTvResponseToDomain(input: $0) }
-                        .eraseToAnyPublisher()
+        remote.getDetailTv(id: id)
+                .map {
+                    DataMapper.mapDetailTvResponseToDomain(input: $0)
+                }
+                .eraseToAnyPublisher()
     }
     
     
     func getAllFavoriteTvs() -> AnyPublisher<[Tv], Error> {
-        return self.local.getAllFavoriteTvs()
-            .map {
-                $0.map { result in
-                    DataMapper.mapFavoriteTvEntityToDomain(input: result)
+        local.getAllFavoriteTvs()
+                .map {
+                    $0.map { result in
+                        DataMapper.mapFavoriteTvEntityToDomain(input: result)
+                    }
                 }
-            }
-            .eraseToAnyPublisher()
+                .eraseToAnyPublisher()
     }
     
     func getFavoriteTv(id: Int) -> AnyPublisher<[Tv], Error> {
-        return self.local.getAllFavoriteTvs()
-            .map {
-                $0.map { result in
-                    DataMapper.mapFavoriteTvEntityToDomain(input: result)
+        local.getAllFavoriteTvs()
+                .map {
+                    $0.map { result in
+                        DataMapper.mapFavoriteTvEntityToDomain(input: result)
+                    }
                 }
-            }
-            .eraseToAnyPublisher()
+                .eraseToAnyPublisher()
     }
     
     
-    func addFavoriteTv(tv: Tv) -> AnyPublisher<Bool, Error>{
-        return self.local.addFavoriteTv(entity: DataMapper.mapTvToFavoriteEntity(input: tv))
-            .eraseToAnyPublisher()
+    func addFavoriteTv(tv: Tv) -> AnyPublisher<Bool, Error> {
+        local.addFavoriteTv(entity: DataMapper.mapTvToFavoriteEntity(input: tv))
+                .eraseToAnyPublisher()
     }
     
     func deleteFavoriteTv(tv: Tv) -> AnyPublisher<Bool, Error> {
-        return self.local.deleteFavoriteTv(entity: DataMapper.mapTvToFavoriteEntity(input: tv))
-            .eraseToAnyPublisher()
+        local.deleteFavoriteTv(entity: DataMapper.mapTvToFavoriteEntity(input: tv))
+                .eraseToAnyPublisher()
     }
 }

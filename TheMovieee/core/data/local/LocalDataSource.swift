@@ -28,7 +28,8 @@ final class LocalDataSource: NSObject {
         self.realm = realm
     }
     static let sharedInstance: (Realm?) -> LocalDataSource = {
-        realmDatabase in return LocalDataSource(realm: realmDatabase)
+        realmDatabase in
+        LocalDataSource(realm: realmDatabase)
     }
     
 }
@@ -36,7 +37,7 @@ final class LocalDataSource: NSObject {
 extension LocalDataSource: LocalDataSourceProtocol {
     
     func addFavoriteMovie(entity: FavoriteMovieEntity) -> AnyPublisher<Bool, Error> {
-        return Future<Bool, Error> { completion in
+        Future<Bool, Error> { completion in
             if let realm = self.realm {
                 do {
                     try realm.write {
@@ -53,7 +54,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
     }
     
     func addFavoriteTv(entity: FavoriteTvEntity) -> AnyPublisher<Bool, Error> {
-        return Future<Bool, Error> { completion in
+        Future<Bool, Error> { completion in
             if let realm = self.realm {
                 do {
                     try realm.write {
@@ -70,12 +71,10 @@ extension LocalDataSource: LocalDataSourceProtocol {
     }
     
     func getFavoriteMovie(id: Int) -> AnyPublisher<[FavoriteMovieEntity], Error> {
-        return Future<[FavoriteMovieEntity], Error> { completion in
+        Future<[FavoriteMovieEntity], Error> { completion in
             if let realm = self.realm {
-                let categories: Results<FavoriteMovieEntity> = {
-                    realm.objects(FavoriteMovieEntity.self)
+                let categories: Results<FavoriteMovieEntity> = realm.objects(FavoriteMovieEntity.self)
                         .filter("movieId = \(id)")
-                }()
                 completion(.success(categories.toArray(ofType: FavoriteMovieEntity.self)))
             } else {
                 completion(.failure(DatabaseError.invalidInstance))
@@ -84,54 +83,49 @@ extension LocalDataSource: LocalDataSourceProtocol {
     }
     
     func getFavoriteTv(id: Int) -> AnyPublisher<[FavoriteTvEntity], Error> {
-        return Future<[FavoriteTvEntity], Error> { completion in
+        Future<[FavoriteTvEntity], Error> { completion in
             if let realm = self.realm {
-                let categories: Results<FavoriteTvEntity> = {
-                    realm.objects(FavoriteTvEntity.self)
+                let categories: Results<FavoriteTvEntity> = realm.objects(FavoriteTvEntity.self)
                         .filter("tvId = \(id)")
-                }()
                 completion(.success(categories.toArray(ofType: FavoriteTvEntity.self)))
             } else {
                 completion(.failure(DatabaseError.invalidInstance))
             }
-        }.eraseToAnyPublisher()
+        }
+                .eraseToAnyPublisher()
     }
     
     func getAllFavoriteMovies() -> AnyPublisher<[FavoriteMovieEntity], Error> {
-        return Future<[FavoriteMovieEntity], Error> { completion in
+        Future<[FavoriteMovieEntity], Error> { completion in
             if let realm = self.realm {
-                let categories: Results<FavoriteMovieEntity> = {
-                    realm.objects(FavoriteMovieEntity.self)
-                            .sorted(byKeyPath: "title", ascending: true)
-                }()
+                let categories: Results<FavoriteMovieEntity> = realm.objects(FavoriteMovieEntity.self)
+                        .sorted(byKeyPath: "title", ascending: true)
                 completion(.success(categories.toArray(ofType: FavoriteMovieEntity.self)))
             } else {
                 completion(.failure(DatabaseError.invalidInstance))
             }
-        }.eraseToAnyPublisher()
+        }
+                .eraseToAnyPublisher()
     }
     
     func getAllFavoriteTvs() -> AnyPublisher<[FavoriteTvEntity], Error> {
-        return Future<[FavoriteTvEntity], Error> { completion in
+        Future<[FavoriteTvEntity], Error> { completion in
             if let realm = self.realm {
-                let categories: Results<FavoriteTvEntity> = {
-                    realm.objects(FavoriteTvEntity.self)
-                            .sorted(byKeyPath: "name", ascending: true)
-                }()
+                let categories: Results<FavoriteTvEntity> = realm.objects(FavoriteTvEntity.self)
+                        .sorted(byKeyPath: "name", ascending: true)
                 completion(.success(categories.toArray(ofType: FavoriteTvEntity.self)))
             } else {
                 completion(.failure(DatabaseError.invalidInstance))
             }
-        }.eraseToAnyPublisher()
+        }
+                .eraseToAnyPublisher()
     }
     
     func deleteFavoriteMovie(entity: FavoriteMovieEntity) -> AnyPublisher<Bool, Error> {
-        return Future<Bool, Error> { completion in
+        Future<Bool, Error> { completion in
             if let realm = self.realm {
                 do {
-                    let movies: Results<FavoriteMovieEntity> = {
-                        realm.objects(FavoriteMovieEntity.self)
-                    }()
+                    let movies: Results<FavoriteMovieEntity> = realm.objects(FavoriteMovieEntity.self)
                     let movie = movies.filter("movieId == \(entity.movieId)")
                     try realm.write {
                         realm.delete(movie)
@@ -143,16 +137,15 @@ extension LocalDataSource: LocalDataSourceProtocol {
             } else {
                 completion(.failure(DatabaseError.invalidInstance))
             }
-        }.eraseToAnyPublisher()
+        }
+                .eraseToAnyPublisher()
     }
     
     func deleteFavoriteTv(entity: FavoriteTvEntity) -> AnyPublisher<Bool, Error> {
-        return Future<Bool, Error> { completion in
+        Future<Bool, Error> { completion in
             if let realm = self.realm {
                 do {
-                    let tvs: Results<FavoriteTvEntity> = {
-                        realm.objects(FavoriteTvEntity.self)
-                    }()
+                    let tvs: Results<FavoriteTvEntity> = realm.objects(FavoriteTvEntity.self)
                     let tv = tvs.filter("tvId == \(entity.tvId)")
                     try realm.write {
                         realm.delete(tv)
@@ -169,7 +162,6 @@ extension LocalDataSource: LocalDataSourceProtocol {
 }
 
 extension Results {
-    
     func toArray<T>(ofType: T.Type) -> [T] {
         var array = [T]()
         for index in 0 ..< count {
@@ -179,5 +171,4 @@ extension Results {
         }
         return array
     }
-    
 }

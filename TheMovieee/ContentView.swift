@@ -23,7 +23,7 @@ struct ContentView: View {
                 TvListView(presenter: tvPresenter)
                         .tabItem {
                             Image(systemName: "tv.fill")
-                            Text("Favorite")
+                            Text("Tv")
                         }
                 FavoriteListView(presenter: favoritePresenter)
                         .tabItem {
