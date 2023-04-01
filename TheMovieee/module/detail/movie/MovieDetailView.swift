@@ -93,8 +93,4 @@ struct MovieDetailView: View {
                     self.presenter.getDetailMovie(id: movie.id)
                 }
     }
-
-    func addFavorite() {
-
-    }
 }

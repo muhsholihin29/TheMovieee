@@ -69,7 +69,7 @@ extension TvRepository: TvRepositoryProtocol {
     }
     
     func getFavoriteTv(id: Int) -> AnyPublisher<[Tv], Error> {
-        local.getAllFavoriteTvs()
+        local.getFavoriteTv(id: id)
                 .map {
                     $0.map { result in
                         DataMapper.mapFavoriteTvEntityToDomain(input: result)

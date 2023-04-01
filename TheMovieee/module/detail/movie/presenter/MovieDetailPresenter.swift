@@ -55,10 +55,9 @@ class MovieDetailPresenter: ObservableObject {
                 case .failure:
                     self.errorMessage = String(describing: completion)
                 case .finished: break
-
                 }
-            }, receiveValue: { favoriteTv in
-                if (!favoriteTv.isEmpty){
+            }, receiveValue: { favoriteMovie in
+                if (!favoriteMovie.isEmpty) {
                     self.isFavorite = true
                 } else {
                     self.isFavorite = false
