@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import Core
+import Favorite
+import Movie
+import Tv
 
 struct FavoriteListView: View {
-    @ObservedObject var presenter: FavoritePresenter
+    @ObservedObject var presenter: GetFavoritePresenter<MovieDomainModel, TvDomainModel, FavoriteInteractor<MovieDomainModel, TvDomainModel, GetFavoritesRepository<GetFavoriteLocaleDataSource, FavoriteTransformer>>>
 
     @State private var selectedTab: Int = 0
     let tabs: [Tab] = [
@@ -40,5 +44,6 @@ struct FavoriteListView: View {
                 }
 
     }
+    
 }
 

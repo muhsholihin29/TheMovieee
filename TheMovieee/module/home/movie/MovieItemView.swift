@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Movie
 
 struct MovieItemView: View {
-    let movie: Movie
+    let movie: MovieDomainModel
     
     var body: some View {
                     

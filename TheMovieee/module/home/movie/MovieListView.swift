@@ -6,9 +6,24 @@
 //
 
 import SwiftUI
+import Tv
+import Core
+import Favorite
+import Movie
 
 struct MovieListView: View {
-    @ObservedObject var presenter: MoviePresenter
+    @ObservedObject var presenter: GetMoviePresenter<
+        MovieDomainModel,
+        DetailMovieDomainModel,
+        MovieInteractor<
+            MovieDomainModel,
+            DetailMovieDomainModel,
+            GetMoviesRepository<
+                GetMoviesRemoteDataSource,
+                MovieTransformer>,
+            GetFavoritesRepository<
+                GetFavoriteLocaleDataSource,
+                FavoriteTransformer>>>
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -23,13 +38,9 @@ struct MovieListView: View {
                     } else {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack{
-                            ForEach(self.presenter.popularMovies, id: \.id) { movie in
-                                ZStack {
-                                    self.presenter.linkBuilder(for: movie) {
-                                        MovieItemView(movie: movie)
-                                    }.buttonStyle(PlainButtonStyle())
+                                ForEach(self.presenter.popularMovies, id: \.id) { movie in
+                                    item(movie: movie)
                                 }
-                            }
                             }
                         }
                     }
@@ -50,11 +61,7 @@ struct MovieListView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack{
                                 ForEach(self.presenter.topRatedMovies, id: \.id) { movie in
-                                    ZStack {
-                                        self.presenter.linkBuilder(for: movie) {
-                                            MovieItemView(movie: movie)
-                                        }.buttonStyle(PlainButtonStyle())
-                                    }
+                                    item(movie: movie)
                                 }
                             }
                         }
@@ -76,11 +83,7 @@ struct MovieListView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack{
                                 ForEach(self.presenter.nowPlayingMovies, id: \.id) { movie in
-                                    ZStack {
-                                        self.presenter.linkBuilder(for: movie) {
-                                            MovieItemView(movie: movie)
-                                        }.buttonStyle(PlainButtonStyle())
-                                    }
+                                    item(movie: movie)
                                 }
                             }
                         }
@@ -103,11 +106,7 @@ struct MovieListView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack{
                                 ForEach(self.presenter.upcomingMovies, id: \.id) { movie in
-                                    ZStack {
-                                        self.presenter.linkBuilder(for: movie) {
-                                            MovieItemView(movie: movie)
-                                        }.buttonStyle(PlainButtonStyle())
-                                    }
+                                    item(movie: movie)
                                 }
                             }
                         }
@@ -123,6 +122,24 @@ struct MovieListView: View {
                         Text("TheMovieee"),
                         displayMode: .automatic
                 )
+    }
+    
+    func item(movie: MovieDomainModel) -> some View {
+        ZStack {
+            linkBuilder(for: movie) {
+                MovieItemView(movie: movie)
+            }.buttonStyle(PlainButtonStyle())
+        }
+    }
+    
+    func linkBuilder<Content: View>(
+        for movie: MovieDomainModel,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        NavigationLink(
+            destination: MovieRouter().makeDetailView(for: movie)) {
+                content()
+            }
     }
 }
 

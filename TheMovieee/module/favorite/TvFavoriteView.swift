@@ -6,9 +6,21 @@
 //
 
 import SwiftUI
+import Tv
+import Movie
+import Core
+import Favorite
 
 struct TvFavoriteView: View {
-    @ObservedObject var presenter: FavoritePresenter
+    @ObservedObject var presenter: GetFavoritePresenter<
+        MovieDomainModel,
+        TvDomainModel,
+        FavoriteInteractor<
+            MovieDomainModel,
+            TvDomainModel,
+            GetFavoritesRepository<
+                GetFavoriteLocaleDataSource,
+                FavoriteTransformer>>>
 
     var body: some View {
         VStack {
@@ -19,15 +31,21 @@ struct TvFavoriteView: View {
                 }
             } else {
                 List(presenter.favoriteTvs, id: \.id) { tv in
-                    VStack {
-
-                        self.presenter.linkBuilderTv(for: tv) {
-                                    TvFavoriteItemView(tv: tv)
-                                }
-                                .buttonStyle(PlainButtonStyle())
+                    ZStack {
+                        linkBuilder(for: tv) {
+                            TvItemView(tv: tv)
+                        }.buttonStyle(PlainButtonStyle())
                     }
                 }
             }
         }
+    }
+    
+    func linkBuilder<Content: View>(
+        for tv: TvDomainModel,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        NavigationLink(
+            destination: TvRouter().makeDetailView(for: tv)) { content() }
     }
 }

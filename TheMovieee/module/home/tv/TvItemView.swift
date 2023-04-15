@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Tv
 
 struct TvItemView: View {
-    var tv: Tv
+    var tv: TvDomainModel
     var body: some View {
         VStack {
             AsyncImage(url: URL(string: "\("https://image.tmdb.org/t/p/w200")\(tv.posterPath)")) { phase in

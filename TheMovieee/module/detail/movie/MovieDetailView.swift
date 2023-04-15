@@ -6,10 +6,24 @@
 //
 
 import SwiftUI
+import Movie
+import Core
+import Favorite
 
 struct MovieDetailView: View {
-    var movie: Movie
-    @ObservedObject var presenter: MovieDetailPresenter
+    var movie: MovieDomainModel
+    @ObservedObject var presenter: GetMovieDetailPresenter<
+        MovieDomainModel,
+        DetailMovieDomainModel,
+        MovieInteractor<
+            MovieDomainModel,
+            DetailMovieDomainModel,
+            GetMoviesRepository<
+                GetMoviesRemoteDataSource,
+                MovieTransformer>,
+            GetFavoritesRepository<
+                GetFavoriteLocaleDataSource,
+                FavoriteTransformer>>>
     
     var body: some View {
         VStack(alignment: .center) {

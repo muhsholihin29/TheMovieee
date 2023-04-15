@@ -1,15 +1,29 @@
 //
 //  TvDetailView.swift
-//  TheMovieee
+//  TheTvee
 //
 //  Created by Sholi on 12/03/23.
 //
 
 import SwiftUI
+import Tv
+import Core
+import Favorite
 
 struct TvDetailView: View {
-    var tv: Tv
-    @ObservedObject var presenter: TvDetailPresenter
+    var tv: TvDomainModel
+    @ObservedObject var presenter: GetTvDetailPresenter<
+        TvDomainModel,
+        DetailTvDomainModel,
+        TvInteractor<
+            TvDomainModel,
+            DetailTvDomainModel,
+            GetTvsRepository<
+                GetTvsRemoteDataSource,
+                TvTransformer>,
+            GetFavoritesRepository<
+                GetFavoriteLocaleDataSource,
+                FavoriteTransformer>>>
     
     var body: some View {
         VStack(alignment: .center) {

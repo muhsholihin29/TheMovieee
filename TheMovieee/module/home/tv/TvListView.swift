@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Core
+import Tv
+import Favorite
 
 struct TvListView: View {
-    @ObservedObject var presenter: TvPresenter
-    
+    @ObservedObject var presenter: GetTvPresenter<TvDomainModel, DetailTvDomainModel, TvInteractor<TvDomainModel, DetailTvDomainModel, GetTvsRepository<GetTvsRemoteDataSource, TvTransformer>, GetFavoritesRepository<GetFavoriteLocaleDataSource, FavoriteTransformer>>>
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
@@ -23,14 +25,14 @@ struct TvListView: View {
                     } else {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                            ForEach(self.presenter.popularTv, id: \.id) { tv in
-                                
-                                ZStack {
-                                    self.presenter.linkBuilder(for: tv) {
-                                        TvItemView(tv: tv)
-                                    }.buttonStyle(PlainButtonStyle())
+                                ForEach(self.presenter.popularTv, id: \.id) { tv in
+                                    
+                                    ZStack {
+                                        linkBuilder(for: tv) {
+                                            TvItemView(tv: tv)
+                                        }.buttonStyle(PlainButtonStyle())
+                                    }
                                 }
-                            }
                             }
                         }
                     }
@@ -52,7 +54,7 @@ struct TvListView: View {
                                 ForEach(self.presenter.topRatedTv, id: \.id) { tv in
                                 
                                 ZStack {
-                                    self.presenter.linkBuilder(for: tv) {
+                                    linkBuilder(for: tv) {
                                         TvItemView(tv: tv)
                                     }.buttonStyle(PlainButtonStyle())
                                 }
@@ -79,7 +81,7 @@ struct TvListView: View {
                                 ForEach(self.presenter.onTheAirTv, id: \.id) { tv in
                                     
                                     ZStack {
-                                        self.presenter.linkBuilder(for: tv) {
+                                        linkBuilder(for: tv) {
                                             TvItemView(tv: tv)
                                         }.buttonStyle(PlainButtonStyle())
                                     }
@@ -106,7 +108,7 @@ struct TvListView: View {
                                 ForEach(self.presenter.airingTodayTv, id: \.id) { tv in
                                     
                                     ZStack {
-                                        self.presenter.linkBuilder(for: tv) {
+                                        linkBuilder(for: tv) {
                                             TvItemView(tv: tv)
                                         }.buttonStyle(PlainButtonStyle())
                                     }
@@ -124,5 +126,21 @@ struct TvListView: View {
                         Text("TheMovieee"),
                         displayMode: .automatic
                 )
+    }
+    
+    func item(tv: TvDomainModel) -> some View {
+        ZStack {
+            linkBuilder(for: tv) {
+                TvItemView(tv: tv)
+            }.buttonStyle(PlainButtonStyle())
+        }
+    }
+    
+    func linkBuilder<Content: View>(
+        for tv: TvDomainModel,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        NavigationLink(
+            destination: TvRouter().makeDetailView(for: tv)) { content() }
     }
 }

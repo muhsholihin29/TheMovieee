@@ -6,11 +6,23 @@
 //
 
 import SwiftUI
+import Movie
+import Core
+import Favorite
 
 class MovieRouter {
-    func makeDetailView(for movie: Movie) -> some View {
-        let detailUseCase = Injection.init().provideMovie()
-        let presenter = MovieDetailPresenter(detailUseCase: detailUseCase)
+    func makeDetailView(for movie: MovieDomainModel) -> some View {
+        let detailUseCase: MovieInteractor<
+            MovieDomainModel,
+            DetailMovieDomainModel,
+            GetMoviesRepository<
+                GetMoviesRemoteDataSource,
+                MovieTransformer>,
+            GetFavoritesRepository<
+                GetFavoriteLocaleDataSource,
+                FavoriteTransformer>
+        > = Injection.init().provideMovie()
+        let presenter = GetMovieDetailPresenter(detailUseCase: detailUseCase)
         return MovieDetailView(movie: movie, presenter: presenter)
     }
 }

@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Tv
 
 struct TvFavoriteItemView: View {
-    var tv: Tv
+    var tv: TvDomainModel
     var body: some View {
         ZStack(alignment: .leading) {
             HStack(alignment: .center) {

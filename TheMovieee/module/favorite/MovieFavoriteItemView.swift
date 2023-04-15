@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Movie
 
 struct MovieFavoriteItemView: View {
-    var movie: Movie
+    var movie: MovieDomainModel
     var body: some View {
         ZStack(alignment: .leading) {
             HStack(alignment: .center) {

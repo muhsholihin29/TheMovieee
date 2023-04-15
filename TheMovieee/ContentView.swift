@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import Core
+import Movie
+import Favorite
+import Tv
 
 struct ContentView: View {
-    @EnvironmentObject var moviePresenter: MoviePresenter
-    @EnvironmentObject var tvPresenter: TvPresenter
-    @EnvironmentObject var favoritePresenter: FavoritePresenter
+    @EnvironmentObject var moviePresenter: GetMoviePresenter<MovieDomainModel, DetailMovieDomainModel, MovieInteractor<MovieDomainModel, DetailMovieDomainModel, GetMoviesRepository<GetMoviesRemoteDataSource, MovieTransformer>, GetFavoritesRepository<GetFavoriteLocaleDataSource, FavoriteTransformer>>>
+    @EnvironmentObject var tvPresenter: GetTvPresenter<TvDomainModel, DetailTvDomainModel, TvInteractor<TvDomainModel, DetailTvDomainModel, GetTvsRepository<GetTvsRemoteDataSource, TvTransformer>, GetFavoritesRepository<GetFavoriteLocaleDataSource, FavoriteTransformer>>>
+    @EnvironmentObject var favoritePresenter: GetFavoritePresenter<MovieDomainModel, TvDomainModel, FavoriteInteractor<MovieDomainModel, TvDomainModel, GetFavoritesRepository<GetFavoriteLocaleDataSource, FavoriteTransformer>>>
     
     var body: some View {
         NavigationView {
