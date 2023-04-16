@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Movie
-import Core
+import CorePackage
 import Favorite
 
 class MovieRouter {

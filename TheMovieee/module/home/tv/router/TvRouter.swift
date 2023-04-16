@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Tv
-import Core
+import CorePackage
 import Favorite
 
 class TvRouter {

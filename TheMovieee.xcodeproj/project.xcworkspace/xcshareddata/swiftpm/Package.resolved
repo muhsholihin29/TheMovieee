@@ -26,6 +26,15 @@
         "branch" : "master",
         "revision" : "c238f838efefed37503c35f49e745c1376bf18d1"
       }
+    },
+    {
+      "identity" : "themovieee--modularization-core-module",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/muhsholihin29/TheMovieee--Modularization-Core-Module.git",
+      "state" : {
+        "revision" : "2a44f6dd1bc5d22f80b4aedcb74e012d2121a313",
+        "version" : "1.0.0"
+      }
     }
   ],
   "version" : 2

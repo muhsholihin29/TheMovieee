@@ -29,11 +29,11 @@
 		CFC25F1B29BDD8B0002D1664 /* TvFavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC25F1A29BDD8B0002D1664 /* TvFavoriteView.swift */; };
 		CFC25F5629BDFA8A002D1664 /* CustomeError+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC25F5529BDFA8A002D1664 /* CustomeError+Ext.swift */; };
 		CFC25F5829BDFBBA002D1664 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC25F5729BDFBBA002D1664 /* Injection.swift */; };
+		CFC943F029EC49A0003C487A /* CorePackage in Frameworks */ = {isa = PBXBuildFile; productRef = CFC943EF29EC49A0003C487A /* CorePackage */; };
 		CFC9591429C1E02E0032D653 /* FavoriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9591329C1E02E0032D653 /* FavoriteListView.swift */; };
 		CFC9591B29C1EC570032D653 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9591A29C1EC570032D653 /* Tabs.swift */; };
 		CFC9591D29C1FF750032D653 /* TvFavoriteItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9591C29C1FF750032D653 /* TvFavoriteItemView.swift */; };
 		CFC9591F29C200090032D653 /* MovieFavoriteItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9591E29C200090032D653 /* MovieFavoriteItemView.swift */; };
-		CFE437A629EA5AD2004B1610 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = CFE437A529EA5AD2004B1610 /* Core */; };
 		CFE437A829EA5AD5004B1610 /* Favorite in Frameworks */ = {isa = PBXBuildFile; productRef = CFE437A729EA5AD5004B1610 /* Favorite */; };
 		CFE437AA29EA5AD9004B1610 /* Movie in Frameworks */ = {isa = PBXBuildFile; productRef = CFE437A929EA5AD9004B1610 /* Movie */; };
 		CFE437AC29EA5ADC004B1610 /* Tv in Frameworks */ = {isa = PBXBuildFile; productRef = CFE437AB29EA5ADC004B1610 /* Tv */; };
@@ -61,7 +61,6 @@
 		CF1A3E5329C095AC00AA40A2 /* TvRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvRouter.swift; sourceTree = "<group>"; };
 		CF1A3E5629C095BC00AA40A2 /* MovieRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRouter.swift; sourceTree = "<group>"; };
 		CF1A3E5929C0C73F00AA40A2 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		CF229B9929D84C18000BFC30 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Core; path = Module/Core; sourceTree = "<group>"; };
 		CFC25ED829BDD54B002D1664 /* TheMovieee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC25EDB29BDD54B002D1664 /* TheMovieeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieeeApp.swift; sourceTree = "<group>"; };
 		CFC25EDD29BDD54B002D1664 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,9 +98,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFE437AC29EA5ADC004B1610 /* Tv in Frameworks */,
+				CFC943F029EC49A0003C487A /* CorePackage in Frameworks */,
 				CFF2A28A29EA588800FDD329 /* Alamofire in Frameworks */,
 				CFE437AA29EA5AD9004B1610 /* Movie in Frameworks */,
-				CFE437A629EA5AD2004B1610 /* Core in Frameworks */,
 				CFE437A829EA5AD5004B1610 /* Favorite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,7 +163,6 @@
 		CF229B9729D84BE7000BFC30 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				CF229B9929D84C18000BFC30 /* Core */,
 				CFFC3F0529D8711D004D3FA0 /* Favorite */,
 				CFE0C15E29D883AC004DFCF0 /* Movie */,
 				CFE437A429EA5AC5004B1610 /* Tv */,
@@ -380,10 +378,10 @@
 			name = TheMovieee;
 			packageProductDependencies = (
 				CFF2A28929EA588800FDD329 /* Alamofire */,
-				CFE437A529EA5AD2004B1610 /* Core */,
 				CFE437A729EA5AD5004B1610 /* Favorite */,
 				CFE437A929EA5AD9004B1610 /* Movie */,
 				CFE437AB29EA5ADC004B1610 /* Tv */,
+				CFC943EF29EC49A0003C487A /* CorePackage */,
 			);
 			productName = TheMovieee;
 			productReference = CFC25ED829BDD54B002D1664 /* TheMovieee.app */;
@@ -459,6 +457,7 @@
 			mainGroup = CFC25ECF29BDD54B002D1664;
 			packageReferences = (
 				CF5DEE7929E22999006F34EC /* XCRemoteSwiftPackageReference "Alamofire" */,
+				CFC943EE29EC49A0003C487A /* XCRemoteSwiftPackageReference "TheMovieee--Modularization-Core-Module" */,
 			);
 			productRefGroup = CFC25ED929BDD54B002D1664 /* Products */;
 			projectDirPath = "";
@@ -851,12 +850,21 @@
 				kind = branch;
 			};
 		};
+		CFC943EE29EC49A0003C487A /* XCRemoteSwiftPackageReference "TheMovieee--Modularization-Core-Module" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/muhsholihin29/TheMovieee--Modularization-Core-Module.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CFE437A529EA5AD2004B1610 /* Core */ = {
+		CFC943EF29EC49A0003C487A /* CorePackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Core;
+			package = CFC943EE29EC49A0003C487A /* XCRemoteSwiftPackageReference "TheMovieee--Modularization-Core-Module" */;
+			productName = CorePackage;
 		};
 		CFE437A729EA5AD5004B1610 /* Favorite */ = {
 			isa = XCSwiftPackageProductDependency;

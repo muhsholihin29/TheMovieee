@@ -7,7 +7,7 @@
 
 import Foundation
 import RealmSwift
-import Core
+import CorePackage
 import Favorite
 import Movie
 import Tv

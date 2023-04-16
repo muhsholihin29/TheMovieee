@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.2.0")),
-        .package(path: "../Core")
+        .package(url: "https://github.com/muhsholihin29/TheMovieee--Modularization-Core-Module.git", .upToNextMajor(from: "1.0.0")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -23,7 +23,7 @@ let package = Package(
         .target(
             name: "Movie",
             dependencies: [
-                "Core",
+                .product(name: "CorePackage", package: "TheMovieee--Modularization-Core-Module"),
                 "Alamofire"
             ]),
         .testTarget(

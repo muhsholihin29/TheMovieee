@@ -5,7 +5,7 @@
 //  Created by Sholi on 12/04/23.
 //
 
-import Core
+import CorePackage
 import Combine
 import Tv
 import Movie

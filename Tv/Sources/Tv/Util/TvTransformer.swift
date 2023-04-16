@@ -5,7 +5,7 @@
 //  Created by Sholi on 08/04/23.
 //
 
-import Core
+import CorePackage
 
 public struct TvTransformer: TvMapper {
     

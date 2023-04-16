@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Favorite
-import Core
+import CorePackage
 import Movie
 import Tv
 

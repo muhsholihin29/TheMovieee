@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Core
+import CorePackage
 import Tv
 import Favorite
 

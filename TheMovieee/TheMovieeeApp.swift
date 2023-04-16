@@ -8,7 +8,7 @@
 import SwiftUI
 import Movie
 import Tv
-import Core
+import CorePackage
 import Favorite
 
 let movieUseCase: MovieInteractor<

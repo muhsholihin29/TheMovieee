@@ -8,7 +8,7 @@
 import SwiftUI
 import Tv
 import Movie
-import Core
+import CorePackage
 import Favorite
 
 struct TvFavoriteView: View {

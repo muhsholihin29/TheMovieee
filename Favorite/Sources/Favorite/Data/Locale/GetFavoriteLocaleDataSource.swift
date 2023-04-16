@@ -5,7 +5,7 @@
 //  Created by Sholi on 01/04/23.
 //
 
-import Core
+import CorePackage
 import Combine
 import RealmSwift
 import Foundation

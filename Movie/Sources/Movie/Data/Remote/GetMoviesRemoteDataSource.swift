@@ -7,7 +7,7 @@
 
 import Foundation
 import Alamofire
-import Core
+import CorePackage
 import Combine
 
 public struct GetMoviesRemoteDataSource : MovieRemoteDataSource {
